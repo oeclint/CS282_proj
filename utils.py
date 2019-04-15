@@ -20,7 +20,7 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
     for mf_arr in mf._arrays:
         r, c = mf_arr.shape
         size = size_per_channel * num_channels
-        dc = size - c % size
+        dc = (size - c % size) % size
         arr = np.zeros((r, c + dc))
         arr[:,0:c] = mf_arr.toarray()[:,0:c]
         for i in range(0, c + dc, size):
