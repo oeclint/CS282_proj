@@ -10,38 +10,37 @@ def save_piano_rolls(file_path):
     mf = MidiFile.from_mid(f)
     mf.save_piano_rolls()
 
-def get_piano_rolls(file_path, size = 128*3, random = True):
+def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
 
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
 
-    arr_part = []
+    data_arr = []
 
-    for arr in mf._arrays:
-        r, c = arr.shape
+    for mf_arr in mf._arrays:
+        r, c = mf_arr.shape
+        size = size_per_channel * num_channels
         dc = size - c % size
-        exp_arr = np.zeros((r, c + dc))
-        exp_arr[:,0:c] = arr.toarray()[:,0:c]
+        arr = np.zeros((r, c + dc))
+        arr[:,0:c] = mf_arr.toarray()[:,0:c]
         for i in range(0, c + dc, size):
-            arr_part.append(
-                sparse.csr_matrix(
-                    exp_arr[:,i:i+size]))
+            channel_arr = np.zeros((num_channels, r, size_per_channel))
+            for cx, j in enumerate(range(i, i + size, size_per_channel)):
+                channel_arr[cx] = arr[:,j : j + size_per_channel]
+            data_arr.append(channel_arr)
 
-    if random:
-        shuffle(arr_part)
-
-    return arr_part
+    return data_arr
 
 class DataGen(object):
 
-    def __init__(self, file_path, batch_size, channel_size, width = 128*3, seed=4):
+    def __init__(self, file_path, batch_size, num_channels, width = 128*3, seed=4):
         self.file_path = file_path
         self.batch_size = batch_size
-        self.channel_size = channel_size
+        self.num_channels = num_channels
         self.width = width
         self.seed = seed
-        self._data = get_piano_rolls(file_path, width)
         np.random.seed(seed=seed)
+        self._data = get_piano_rolls(file_path, width, num_channels)
 
     def __len__(self):
         return len(self._data)
@@ -49,8 +48,9 @@ class DataGen(object):
     def gen_batch(self):
         indx = np.random.randint(0, high = len(self._data), size = self.batch_size)
         data = [self._data[i] for i in indx]
-        return data
+        return np.stack(data)
 
 if __name__ == '__main__':
-    data = DataGen('data/*/*.npz', 68, 1)
+    data = DataGen('data/adam/*.npz', 68, 9)
     print("loaded {0} datasets".format(len(data)))
+    print(data.gen_batch().shape)
