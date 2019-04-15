@@ -10,7 +10,7 @@ def save_piano_rolls(file_path):
     mf = MidiFile.from_mid(f)
     mf.save_piano_rolls()
 
-def get_piano_rolls(file_path, size = 128, random = True):
+def get_piano_rolls(file_path, size = 128*3, random = True):
 
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
@@ -32,8 +32,25 @@ def get_piano_rolls(file_path, size = 128, random = True):
 
     return arr_part
 
-def gen_data(file_path):
+class DataGen(object):
+
+    def __init__(self, file_path, batch_size, channel_size, width = 128*3, seed=4):
+        self.file_path = file_path
+        self.batch_size = batch_size
+        self.channel_size = channel_size
+        self.width = width
+        self.seed = seed
+        self._data = get_piano_rolls(file_path, width)
+        np.random.seed(seed=seed)
+
+    def __len__(self):
+        return len(self._data)
+
+    def gen_batch(self):
+        indx = np.random.randint(0, high = len(self._data), size = self.batch_size)
+        data = [self._data[i] for i in indx]
+        return data
 
 if __name__ == '__main__':
-    data = get_piano_rolls('data/*/*.npz')
+    data = DataGen('data/*/*.npz', 68, 1)
     print("loaded {0} datasets".format(len(data)))
