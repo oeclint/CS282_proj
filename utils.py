@@ -50,11 +50,14 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
         arr = np.zeros((r, c + dc))
         arr[:,0:c] = mf_arr.toarray()[:,0:c]
         for i in range(0, c + dc, size):
-            channel_arr = np.zeros((num_channels, r, size_per_channel))
+            #channel_arr = np.zeros((num_channels, r, size_per_channel))
+            channel_arr = []
             for cx, j in enumerate(range(i, i + size, size_per_channel)):
                 octshft = OctaveShifter(arr[:,j : j + size_per_channel])
-                channel_arr[cx] = octshft.shift()
-                if np.any(channel_arr[cx]):
+                #channel_arr[cx] = octshft.shift()
+                shifted = octshft.shift()
+                channel_arr.append(sparse.csr_matrix(shifted))
+                if np.any(shifted):
                     min_top = min(min_top,octshft.top)
                     max_bot = max(max_bot,octshft.bot)
             data_arr.append(channel_arr)
@@ -77,7 +80,10 @@ class DataGen(object):
 
         while(self._data):
             piano_roll = self._data.popleft()
-            data.append(piano_roll[:,self.top:(self.bot+1),:])
+            channels = np.stack([pr.toarray() for pr in piano_roll])
+            channels = channels[:,self.top:(self.bot+1),:]
+            data.append([sparse.csr_matrix(channels[i]) 
+                for i in range (len(channels))])
 
         self._data = data
 
@@ -86,7 +92,8 @@ class DataGen(object):
             #from PIL import Image
             #im = Image.fromarray(np.moveaxis(piano_roll, 0, -1))
             #im.save("your_file.jpeg")
-            arr = np.moveaxis(piano_roll, 0, -1)
+            channels = np.stack([pr.toarray() for pr in piano_roll])
+            arr = np.moveaxis(channels, 0, -1)
             arr = np.moveaxis(arr, 0, 1)
             scipy.misc.imsave('{0}-{1}.png'.format(path,i), arr)
 
