@@ -166,7 +166,7 @@ class OctaveShifter(object):
         return self.arr
 
 if __name__ == '__main__':
-    data = DataGen('data/adam/*.npz', 68, 3)
+    data = DataGen('data/*/*.npz', 68, 3)
     data.clip()
     data.write('imgs/d')
     print('top:', data.top, 'bot:', data.bot)
