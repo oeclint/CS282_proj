@@ -56,7 +56,7 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
             for cx, j in enumerate(range(i, i + size, size_per_channel)):
                 octshft = OctaveShifter(arr[:,j : j + size_per_channel])
                 #channel_arr[cx] = octshft.shift()
-                shifted = octshft.shift()
+                shifted = octshft.shift_to_4_octaves()
                 channel_arr.append(sparse.csr_matrix(shifted))
                 if np.any(shifted):
                     min_top = min(min_top,octshft.top)
@@ -143,7 +143,7 @@ class OctaveShifter(object):
 
        return (next_bot + next_top + 1)//2
 
-    def shift(self):
+    def shift_center(self):
        
         mean = self.mean
        
@@ -170,6 +170,35 @@ class OctaveShifter(object):
                 self.bot += 12
                 mean_d = self.mean
                 next_mean_d = self.next_mean_d
+
+        return self.arr
+
+    def shift_to_4_octaves(self):
+
+        self.top = 40
+        self.bot = 87
+
+        r, c = self.arr.shape
+
+        for j in range(c):
+            for i in range(r):
+                val = self.arr[i][j]
+                if val:
+                    if i < self.top:
+                        # go down
+                        curr_pos = i
+                        while(curr_pos<self.top):
+                            curr_pos += 12
+
+                        self.arr[curr_pos][j] = val
+
+                    if i > self.bot:
+                        # go up
+                        curr_pos = i
+                        while(curr_pos>self.bot):
+                            curr_pos -= 12
+
+                        self.arr[curr_pos][j] = val
 
         return self.arr
 
