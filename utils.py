@@ -38,6 +38,7 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
 
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
+
     min_top = 127
     max_bot = 0
 
