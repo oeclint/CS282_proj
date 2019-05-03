@@ -29,13 +29,13 @@ class Solver(object):
 
     def train(self):
 
-        for epoch_i in trange(self.config.n_epochs, desc='Epoch', ncols=80):
+        for epoch_i in trange(6, desc='Epoch', ncols=80):
             epoch_i += 1
 
             # For debugging
-            if epoch_i == 1:
+            #if epoch_i == 1:
                 #     self.test(epoch_i)
-                self.sample(epoch_i)
+                #self.sample(epoch_i)
 
             self.net.train()
             self.batch_loss_history = []
@@ -59,20 +59,20 @@ class Solver(object):
                 self.optimizer.zero_grad()
                 batch_loss.backward()
                 self.optimizer.step()
-
                 batch_loss = float(batch_loss.data)
                 self.batch_loss_history.append(batch_loss)
 
-                if batch_i > 1 and batch_i % self.config.log_interval == 0:
-                    log_string = f'Epoch: {epoch_i} | Batch: ({batch_i}/{self.n_batches_in_epoch}) | '
-                    log_string += f'Loss: {batch_loss:.3f}'
-                    tqdm.write(log_string)
+                #if batch_i > 1 and batch_i % self.config.log_interval == 0:
+                    #log_string = f'Epoch: {epoch_i} | Batch: ({batch_i}/{self.n_batches_in_epoch}) | '
+                    #log_string += f'Loss: {batch_loss:.3f}'
+                    #tqdm.write(log_string)
 
             epoch_loss = np.mean(self.batch_loss_history)
             tqdm.write(f'Epoch Loss: {epoch_loss:.2f}')
 
-            self.test(epoch_i)
-            self.sample(epoch_i)
+            #self.test(epoch_i)
+            if epoch_i==3 or epoch_i==6:
+                self.sample(epoch_i)
 
     def test(self, epoch_i):
         """Compute error on test set"""
@@ -115,10 +115,11 @@ class Solver(object):
         tqdm.write(f'Saved sampled images at f{image_path})')
         self.net.eval()
 
-        sample = torch.zeros(self.config.batch_size, 3, 32, 32).cuda()
+        sample = torch.zeros(8, 3, 384, 48).cuda()
 
-        for i in range(32):
-            for j in range(32):
+        for i in range(384):
+            print(i)
+            for j in range(48):
 
                 # [batch_size, channel, height, width, 256]
                 out = self.net(Variable(sample, volatile=True))
@@ -131,9 +132,9 @@ class Solver(object):
                 for k in range(3):
                     # 0 ~ 255 => 0 ~ 1
                     pixel = torch.multinomial(probs[:, k], 1).float() / 255.
-                    sample[:, k, i, j] = pixel
+                    sample[:, k, i, j] = pixel.squeeze()
 
-        import ipdb
-        ipdb.set_trace()
+        #import ipdb
+        #ipdb.set_trace()
 
         save_image(sample, image_path)

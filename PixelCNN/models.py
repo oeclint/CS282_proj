@@ -11,7 +11,7 @@ class PixelCNN(nn.Module):
 
         self.MaskAConv = maskAConv(n_channel, 2 * h, k_size=7, stride=1, pad=3)
         MaskBConv = []
-        for i in range(15):
+        for i in range(3):
             MaskBConv.append(MaskBConvBlock(h, k_size=3, stride=1, pad=1))
         self.MaskBConv = nn.Sequential(*MaskBConv)
 
