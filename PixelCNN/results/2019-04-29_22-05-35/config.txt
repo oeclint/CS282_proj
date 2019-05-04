@@ -1,0 +1,14 @@
+------------ Configurations -------------
+batch_size: 16
+ckpt_dir: /home/ubuntu/project/CS282_proj/PixelCNN/results/2019-04-29_22-05-35
+dataset: CIFAR10
+dataset_dir: /home/ubuntu/project/CS282_proj/PixelCNN/datasets/CIFAR10
+isTrain: True
+log_interval: 100
+mode: train
+model_dir: /home/ubuntu/project/CS282_proj/PixelCNN/results
+n_epochs: 200
+optimizer: <class 'torch.optim.rmsprop.RMSprop'>
+parser: ArgumentParser(prog='ipykernel_launcher.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+save_interval: 10
+----------------- End -------------------

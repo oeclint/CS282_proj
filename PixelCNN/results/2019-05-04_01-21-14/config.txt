@@ -1,0 +1,14 @@
+------------ Configurations -------------
+batch_size: 8
+ckpt_dir: /home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_01-21-14
+dataset: pianorolls
+dataset_dir: /home/ubuntu/project/CS282_proj/PixelCNN/datasets/pianorolls
+isTrain: True
+log_interval: 1
+mode: train
+model_dir: /home/ubuntu/project/CS282_proj/PixelCNN/results
+n_epochs: 200
+optimizer: <class 'torch.optim.rmsprop.RMSprop'>
+parser: ArgumentParser(prog='train.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+save_interval: 1
+----------------- End -------------------
