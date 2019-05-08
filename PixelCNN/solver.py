@@ -33,8 +33,8 @@ class Solver(object):
             epoch_i += 1
 
             # For debugging
+            # In case there is a memory error
             if epoch_i == 1:
-                #self.test(epoch_i)
                 self.sample(epoch_i)
 
             self.net.train()
@@ -71,8 +71,9 @@ class Solver(object):
             tqdm.write(f'Epoch Loss: {epoch_loss:.2f}')
 
             self.test(epoch_i)
-            #if epoch_i==3 or epoch_i==6:
-            self.sample(epoch_i)
+
+            if epoch_i % self.config.save_interval == 0:
+                self.sample(epoch_i)
 
     @torch.no_grad()
     def test(self, epoch_i):
