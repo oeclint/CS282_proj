@@ -1,0 +1,650 @@
+ython train.py -dataset pianorolls --batch_size 2 --save_interval 1  --log_interval 1[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpython train.py -dataset pianorolls --batch_size 2 --save_interval 1[1@ [A(pytorch_p36) [01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ [C
+
+Traceback (most recent call last):
+  File "train.py", line 1, in <module>
+    from PixelCNN.configs import BaseConfig as Config
+  File "/home/ubuntu/project/CS282_proj/PixelCNN/configs.py", line 5, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+(pytorch_p36) [01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ [C[38Preverse-i-search)`':[Cd': python train.py -dataset pianorolls --batch_size 2 --save_interval 1 --log_interval 1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce': source deactivate[K[Cpytorch_p36) [01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ source deactivate
+[01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ source deactivatepython train.py -dataset pianorolls --batch_size 2 --save_interval 1 --log_intervaal 1[A[01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ ython train.py -dataset pianorolls --batch_size 2 --save_interval 1 --log_interval[1P 1[A[01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ ls[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csource activate pytorch_p36
+(pytorch_p36) [01;32mubuntu@ip-172-31-56-161[00m:[01;34m~/project/CS282_proj[00m$ source activate pytorch_p36[10Pdeactivatepython train.py -dataset pianorolls --batch_size 2 --save_interval 11 --log_interval 1
+Configurations
+{'batch_size': 2,
+ 'ckpt_dir': PosixPath('/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45'),
+ 'dataset': 'pianorolls',
+ 'dataset_dir': PosixPath('/home/ubuntu/project/CS282_proj/PixelCNN/datasets/pianorolls'),
+ 'isTrain': True,
+ 'log_interval': 1,
+ 'mode': 'train',
+ 'model_dir': PosixPath('/home/ubuntu/project/CS282_proj/PixelCNN/results'),
+ 'n_epochs': 200,
+ 'optimizer': <class 'torch.optim.rmsprop.RMSprop'>,
+ 'parser': ArgumentParser(prog='train.py', usage=None, description=None, formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True),
+ 'save_interval': 1}
+PixelCNN(
+  (MaskAConv): Sequential(
+    (0): MaskedConv2d(3, 256, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+    (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (MaskBConv): Sequential(
+    (0): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (2): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (3): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (4): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (5): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (6): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (7): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (8): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (9): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (10): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (11): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (12): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (13): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (14): MaskBConvBlock(
+      (net): Sequential(
+        (0): ReLU()
+        (1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+        (2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (3): ReLU()
+        (4): MaskedConv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (6): ReLU()
+        (7): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+        (8): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (out): Sequential(
+    (0): ReLU()
+    (1): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1))
+    (2): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): ReLU()
+    (4): Conv2d(1024, 768, kernel_size=(1, 1), stride=(1, 1))
+  )
+) 
+
+Epoch:   0%|                                              | 0/6 [00:00<?, ?it/s]                                                                                Saved sampled images at f/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45/epoch-1.png)
+Epoch:   0%|                                              | 0/6 [00:00<?, ?it/s]/home/ubuntu/project/CS282_proj/PixelCNN/solver.py:124: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  out = self.net(Variable(sample, volatile=True))
+
+Batch:   0%|                                             | 0/25 [00:00<?, ?it/s][A
+Batch:   4%|█▍                                   | 1/25 [00:00<00:22,  1.09it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (2/25) | Loss: 2.583
+Epoch:   0%|                                            | 0/6 [1:25:25<?, ?it/s]
+Batch:   4%|█▍                                   | 1/25 [00:01<00:22,  1.09it/s][A
+Batch:   8%|██▉                                  | 2/25 [00:01<00:21,  1.10it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (3/25) | Loss: 0.926
+Epoch:   0%|                                            | 0/6 [1:25:26<?, ?it/s]
+Batch:   8%|██▉                                  | 2/25 [00:02<00:21,  1.10it/s][A
+Batch:  12%|████▍                                | 3/25 [00:02<00:19,  1.10it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (4/25) | Loss: 0.251
+Epoch:   0%|                                            | 0/6 [1:25:27<?, ?it/s]
+Batch:  12%|████▍                                | 3/25 [00:03<00:19,  1.10it/s][A
+Batch:  16%|█████▉                               | 4/25 [00:03<00:18,  1.11it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (5/25) | Loss: 2.092
+Epoch:   0%|                                            | 0/6 [1:25:28<?, ?it/s]
+Batch:  16%|█████▉                               | 4/25 [00:04<00:18,  1.11it/s][A
+Batch:  20%|███████▍                             | 5/25 [00:04<00:18,  1.11it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (6/25) | Loss: 2.746
+Epoch:   0%|                                            | 0/6 [1:25:29<?, ?it/s]
+Batch:  20%|███████▍                             | 5/25 [00:05<00:18,  1.11it/s][A
+Batch:  24%|████████▉                            | 6/25 [00:05<00:17,  1.11it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (7/25) | Loss: 2.922
+Epoch:   0%|                                            | 0/6 [1:25:30<?, ?it/s]
+Batch:  24%|████████▉                            | 6/25 [00:06<00:17,  1.11it/s][A
+Batch:  28%|██████████▎                          | 7/25 [00:06<00:16,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (8/25) | Loss: 0.557
+Epoch:   0%|                                            | 0/6 [1:25:30<?, ?it/s]
+Batch:  28%|██████████▎                          | 7/25 [00:07<00:16,  1.12it/s][A
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:15,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (9/25) | Loss: 0.524
+Epoch:   0%|                                            | 0/6 [1:25:31<?, ?it/s]
+Batch:  32%|███████████▊                         | 8/25 [00:08<00:15,  1.12it/s][A
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (10/25) | Loss: 0.619
+Epoch:   0%|                                            | 0/6 [1:25:32<?, ?it/s]
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.12it/s][A
+Batch:  40%|██████████████▍                     | 10/25 [00:08<00:13,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (11/25) | Loss: 0.931
+Epoch:   0%|                                            | 0/6 [1:25:33<?, ?it/s]
+Batch:  40%|██████████████▍                     | 10/25 [00:09<00:13,  1.12it/s][A
+Batch:  44%|███████████████▊                    | 11/25 [00:09<00:12,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (12/25) | Loss: 0.592
+Epoch:   0%|                                            | 0/6 [1:25:34<?, ?it/s]
+Batch:  44%|███████████████▊                    | 11/25 [00:10<00:12,  1.12it/s][A
+Batch:  48%|█████████████████▎                  | 12/25 [00:10<00:11,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (13/25) | Loss: 0.564
+Epoch:   0%|                                            | 0/6 [1:25:35<?, ?it/s]
+Batch:  48%|█████████████████▎                  | 12/25 [00:11<00:11,  1.12it/s][A
+Batch:  52%|██████████████████▋                 | 13/25 [00:11<00:10,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (14/25) | Loss: 0.230
+Epoch:   0%|                                            | 0/6 [1:25:36<?, ?it/s]
+Batch:  52%|██████████████████▋                 | 13/25 [00:12<00:10,  1.12it/s][A
+Batch:  56%|████████████████████▏               | 14/25 [00:12<00:09,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (15/25) | Loss: 0.503
+Epoch:   0%|                                            | 0/6 [1:25:37<?, ?it/s]
+Batch:  56%|████████████████████▏               | 14/25 [00:13<00:09,  1.12it/s][A
+Batch:  60%|█████████████████████▌              | 15/25 [00:13<00:08,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (16/25) | Loss: 0.528
+Epoch:   0%|                                            | 0/6 [1:25:38<?, ?it/s]
+Batch:  60%|█████████████████████▌              | 15/25 [00:14<00:08,  1.12it/s][A
+Batch:  64%|███████████████████████             | 16/25 [00:14<00:08,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (17/25) | Loss: 0.772
+Epoch:   0%|                                            | 0/6 [1:25:38<?, ?it/s]
+Batch:  64%|███████████████████████             | 16/25 [00:15<00:08,  1.12it/s][A
+Batch:  68%|████████████████████████▍           | 17/25 [00:15<00:07,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (18/25) | Loss: 0.975
+Epoch:   0%|                                            | 0/6 [1:25:39<?, ?it/s]
+Batch:  68%|████████████████████████▍           | 17/25 [00:16<00:07,  1.12it/s][A
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (19/25) | Loss: 0.552
+Epoch:   0%|                                            | 0/6 [1:25:40<?, ?it/s]
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.12it/s][A
+Batch:  76%|███████████████████████████▎        | 19/25 [00:16<00:05,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (20/25) | Loss: 0.734
+Epoch:   0%|                                            | 0/6 [1:25:41<?, ?it/s]
+Batch:  76%|███████████████████████████▎        | 19/25 [00:17<00:05,  1.12it/s][A
+Batch:  80%|████████████████████████████▊       | 20/25 [00:17<00:04,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (21/25) | Loss: 0.834
+Epoch:   0%|                                            | 0/6 [1:25:42<?, ?it/s]
+Batch:  80%|████████████████████████████▊       | 20/25 [00:18<00:04,  1.12it/s][A
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:18<00:03,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (22/25) | Loss: 0.492
+Epoch:   0%|                                            | 0/6 [1:25:43<?, ?it/s]
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:19<00:03,  1.12it/s][A
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:19<00:02,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (23/25) | Loss: 0.553
+Epoch:   0%|                                            | 0/6 [1:25:44<?, ?it/s]
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:20<00:02,  1.12it/s][A
+Batch:  92%|█████████████████████████████████   | 23/25 [00:20<00:01,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (24/25) | Loss: 0.808
+Epoch:   0%|                                            | 0/6 [1:25:45<?, ?it/s]
+Batch:  92%|█████████████████████████████████   | 23/25 [00:21<00:01,  1.12it/s][A
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:21<00:00,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 1 | Batch: (25/25) | Loss: 0.429
+Epoch:   0%|                                            | 0/6 [1:25:46<?, ?it/s]
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:22<00:00,  1.12it/s][A
+Batch: 100%|████████████████████████████████████| 25/25 [00:22<00:00,  1.12it/s][A
+                                                                                [A                                                                                Epoch Loss: 1.13
+Epoch:   0%|                                            | 0/6 [1:25:46<?, ?it/s]/home/ubuntu/project/CS282_proj/PixelCNN/solver.py:89: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  image = Variable(image.cuda(async=True), volatile=True)
+                                                                                Test done! | It took 7.3s | Test Loss: 0.48
+Epoch:   0%|                                            | 0/6 [1:25:53<?, ?it/s]                                                                                Saved sampled images at f/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45/epoch-1.png)
+Epoch:   0%|                                            | 0/6 [1:25:53<?, ?it/s]Epoch:  17%|█████                         | 1/6 [2:50:48<14:14:04, 10248.94s/it]
+Batch:   0%|                                             | 0/25 [00:00<?, ?it/s][A
+Batch:   4%|█▍                                   | 1/25 [00:00<00:21,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (2/25) | Loss: 0.334
+Epoch:  17%|█████                         | 1/6 [2:50:50<14:14:04, 10248.94s/it]
+Batch:   4%|█▍                                   | 1/25 [00:01<00:21,  1.14it/s][A
+Batch:   8%|██▉                                  | 2/25 [00:01<00:20,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (3/25) | Loss: 0.481
+Epoch:  17%|█████                         | 1/6 [2:50:51<14:14:04, 10248.94s/it]
+Batch:   8%|██▉                                  | 2/25 [00:02<00:20,  1.14it/s][A
+Batch:  12%|████▍                                | 3/25 [00:02<00:19,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (4/25) | Loss: 0.477
+Epoch:  17%|█████                         | 1/6 [2:50:52<14:14:04, 10248.94s/it]
+Batch:  12%|████▍                                | 3/25 [00:03<00:19,  1.14it/s][A
+Batch:  16%|█████▉                               | 4/25 [00:03<00:18,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (5/25) | Loss: 0.273
+Epoch:  17%|█████                         | 1/6 [2:50:53<14:14:04, 10248.94s/it]
+Batch:  16%|█████▉                               | 4/25 [00:04<00:18,  1.14it/s][A
+Batch:  20%|███████▍                             | 5/25 [00:04<00:17,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (6/25) | Loss: 0.526
+Epoch:  17%|█████                         | 1/6 [2:50:54<14:14:04, 10248.94s/it]
+Batch:  20%|███████▍                             | 5/25 [00:05<00:17,  1.14it/s][A
+Batch:  24%|████████▉                            | 6/25 [00:05<00:16,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (7/25) | Loss: 0.364
+Epoch:  17%|█████                         | 1/6 [2:50:55<14:14:04, 10248.94s/it]
+Batch:  24%|████████▉                            | 6/25 [00:06<00:16,  1.14it/s][A
+Batch:  28%|██████████▎                          | 7/25 [00:06<00:15,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (8/25) | Loss: 0.375
+Epoch:  17%|█████                         | 1/6 [2:50:55<14:14:04, 10248.94s/it]
+Batch:  28%|██████████▎                          | 7/25 [00:07<00:15,  1.14it/s][A
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:14,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (9/25) | Loss: 0.127
+Epoch:  17%|█████                         | 1/6 [2:50:56<14:14:04, 10248.94s/it]
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:14,  1.14it/s][A
+Batch:  36%|█████████████▎                       | 9/25 [00:07<00:14,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (10/25) | Loss: 0.437
+Epoch:  17%|█████                         | 1/6 [2:50:57<14:14:04, 10248.94s/it]
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.14it/s][A
+Batch:  40%|██████████████▍                     | 10/25 [00:08<00:13,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (11/25) | Loss: 0.602
+Epoch:  17%|█████                         | 1/6 [2:50:58<14:14:04, 10248.94s/it]
+Batch:  40%|██████████████▍                     | 10/25 [00:09<00:13,  1.14it/s][A
+Batch:  44%|███████████████▊                    | 11/25 [00:09<00:12,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (12/25) | Loss: 0.398
+Epoch:  17%|█████                         | 1/6 [2:50:59<14:14:04, 10248.94s/it]
+Batch:  44%|███████████████▊                    | 11/25 [00:10<00:12,  1.13it/s][A
+Batch:  48%|█████████████████▎                  | 12/25 [00:10<00:11,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (13/25) | Loss: 0.716
+Epoch:  17%|█████                         | 1/6 [2:51:00<14:14:04, 10248.94s/it]
+Batch:  48%|█████████████████▎                  | 12/25 [00:11<00:11,  1.13it/s][A
+Batch:  52%|██████████████████▋                 | 13/25 [00:11<00:10,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (14/25) | Loss: 0.225
+Epoch:  17%|█████                         | 1/6 [2:51:01<14:14:04, 10248.94s/it]
+Batch:  52%|██████████████████▋                 | 13/25 [00:12<00:10,  1.13it/s][A
+Batch:  56%|████████████████████▏               | 14/25 [00:12<00:09,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (15/25) | Loss: 0.545
+Epoch:  17%|█████                         | 1/6 [2:51:02<14:14:04, 10248.94s/it]
+Batch:  56%|████████████████████▏               | 14/25 [00:13<00:09,  1.13it/s][A
+Batch:  60%|█████████████████████▌              | 15/25 [00:13<00:08,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (16/25) | Loss: 0.541
+Epoch:  17%|█████                         | 1/6 [2:51:03<14:14:04, 10248.94s/it]
+Batch:  60%|█████████████████████▌              | 15/25 [00:14<00:08,  1.13it/s][A
+Batch:  64%|███████████████████████             | 16/25 [00:14<00:07,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (17/25) | Loss: 0.666
+Epoch:  17%|█████                         | 1/6 [2:51:03<14:14:04, 10248.94s/it]
+Batch:  64%|███████████████████████             | 16/25 [00:14<00:07,  1.13it/s][A
+Batch:  68%|████████████████████████▍           | 17/25 [00:14<00:07,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (18/25) | Loss: 0.638
+Epoch:  17%|█████                         | 1/6 [2:51:04<14:14:04, 10248.94s/it]
+Batch:  68%|████████████████████████▍           | 17/25 [00:15<00:07,  1.13it/s][A
+Batch:  72%|█████████████████████████▉          | 18/25 [00:15<00:06,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (19/25) | Loss: 0.830
+Epoch:  17%|█████                         | 1/6 [2:51:05<14:14:04, 10248.94s/it]
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.13it/s][A
+Batch:  76%|███████████████████████████▎        | 19/25 [00:16<00:05,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (20/25) | Loss: 1.020
+Epoch:  17%|█████                         | 1/6 [2:51:06<14:14:04, 10248.94s/it]
+Batch:  76%|███████████████████████████▎        | 19/25 [00:17<00:05,  1.14it/s][A
+Batch:  80%|████████████████████████████▊       | 20/25 [00:17<00:04,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (21/25) | Loss: 0.481
+Epoch:  17%|█████                         | 1/6 [2:51:07<14:14:04, 10248.94s/it]
+Batch:  80%|████████████████████████████▊       | 20/25 [00:18<00:04,  1.13it/s][A
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:18<00:03,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (22/25) | Loss: 0.337
+Epoch:  17%|█████                         | 1/6 [2:51:08<14:14:04, 10248.94s/it]
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:19<00:03,  1.13it/s][A
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:19<00:02,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (23/25) | Loss: 0.751
+Epoch:  17%|█████                         | 1/6 [2:51:09<14:14:04, 10248.94s/it]
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:20<00:02,  1.13it/s][A
+Batch:  92%|█████████████████████████████████   | 23/25 [00:20<00:01,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (24/25) | Loss: 0.813
+Epoch:  17%|█████                         | 1/6 [2:51:10<14:14:04, 10248.94s/it]
+Batch:  92%|█████████████████████████████████   | 23/25 [00:21<00:01,  1.14it/s][A
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:21<00:00,  1.14it/s][A                                                                                
+                                                                                [AEpoch: 2 | Batch: (25/25) | Loss: 0.819
+Epoch:  17%|█████                         | 1/6 [2:51:10<14:14:04, 10248.94s/it]
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:22<00:00,  1.14it/s][A
+Batch: 100%|████████████████████████████████████| 25/25 [00:22<00:00,  1.13it/s][A
+                                                                                [A                                                                                Epoch Loss: 0.52
+Epoch:  17%|█████                         | 1/6 [2:51:10<14:14:04, 10248.94s/it]                                                                                Test done! | It took 7.3s | Test Loss: 0.44
+Epoch:  17%|█████                         | 1/6 [2:51:18<14:14:04, 10248.94s/it]                                                                                Saved sampled images at f/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45/epoch-2.png)
+Epoch:  17%|█████                         | 1/6 [2:51:18<14:14:04, 10248.94s/it]Epoch:  33%|██████████▋                     | 2/6 [4:15:50<9:40:18, 8704.60s/it]
+Batch:   0%|                                             | 0/25 [00:00<?, ?it/s][A
+Batch:   4%|█▍                                   | 1/25 [00:00<00:21,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (2/25) | Loss: 0.660
+Epoch:  33%|██████████▋                     | 2/6 [4:15:51<9:40:18, 8704.60s/it]
+Batch:   4%|█▍                                   | 1/25 [00:01<00:21,  1.12it/s][A
+Batch:   8%|██▉                                  | 2/25 [00:01<00:20,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (3/25) | Loss: 0.790
+Epoch:  33%|██████████▋                     | 2/6 [4:15:52<9:40:18, 8704.60s/it]
+Batch:   8%|██▉                                  | 2/25 [00:02<00:20,  1.12it/s][A
+Batch:  12%|████▍                                | 3/25 [00:02<00:19,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (4/25) | Loss: 0.581
+Epoch:  33%|██████████▋                     | 2/6 [4:15:53<9:40:18, 8704.60s/it]
+Batch:  12%|████▍                                | 3/25 [00:03<00:19,  1.13it/s][A
+Batch:  16%|█████▉                               | 4/25 [00:03<00:18,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (5/25) | Loss: 0.337
+Epoch:  33%|██████████▋                     | 2/6 [4:15:54<9:40:18, 8704.60s/it]
+Batch:  16%|█████▉                               | 4/25 [00:04<00:18,  1.13it/s][A
+Batch:  20%|███████▍                             | 5/25 [00:04<00:17,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (6/25) | Loss: 0.399
+Epoch:  33%|██████████▋                     | 2/6 [4:15:55<9:40:18, 8704.60s/it]
+Batch:  20%|███████▍                             | 5/25 [00:05<00:17,  1.13it/s][A
+Batch:  24%|████████▉                            | 6/25 [00:05<00:16,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (7/25) | Loss: 0.615
+Epoch:  33%|██████████▋                     | 2/6 [4:15:56<9:40:18, 8704.60s/it]
+Batch:  24%|████████▉                            | 6/25 [00:06<00:16,  1.13it/s][A
+Batch:  28%|██████████▎                          | 7/25 [00:06<00:15,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (8/25) | Loss: 0.654
+Epoch:  33%|██████████▋                     | 2/6 [4:15:57<9:40:18, 8704.60s/it]
+Batch:  28%|██████████▎                          | 7/25 [00:07<00:15,  1.13it/s][A
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:15,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (9/25) | Loss: 0.685
+Epoch:  33%|██████████▋                     | 2/6 [4:15:58<9:40:18, 8704.60s/it]
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:15,  1.13it/s][A
+Batch:  36%|█████████████▎                       | 9/25 [00:07<00:14,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (10/25) | Loss: 0.450
+Epoch:  33%|██████████▋                     | 2/6 [4:15:58<9:40:18, 8704.60s/it]
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.13it/s][A
+Batch:  40%|██████████████▍                     | 10/25 [00:08<00:13,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (11/25) | Loss: 0.384
+Epoch:  33%|██████████▋                     | 2/6 [4:15:59<9:40:18, 8704.60s/it]
+Batch:  40%|██████████████▍                     | 10/25 [00:09<00:13,  1.13it/s][A
+Batch:  44%|███████████████▊                    | 11/25 [00:09<00:12,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (12/25) | Loss: 0.821
+Epoch:  33%|██████████▋                     | 2/6 [4:16:00<9:40:18, 8704.60s/it]
+Batch:  44%|███████████████▊                    | 11/25 [00:10<00:12,  1.13it/s][A
+Batch:  48%|█████████████████▎                  | 12/25 [00:10<00:11,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (13/25) | Loss: 0.482
+Epoch:  33%|██████████▋                     | 2/6 [4:16:01<9:40:18, 8704.60s/it]
+Batch:  48%|█████████████████▎                  | 12/25 [00:11<00:11,  1.13it/s][A
+Batch:  52%|██████████████████▋                 | 13/25 [00:11<00:10,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (14/25) | Loss: 0.509
+Epoch:  33%|██████████▋                     | 2/6 [4:16:02<9:40:18, 8704.60s/it]
+Batch:  52%|██████████████████▋                 | 13/25 [00:12<00:10,  1.13it/s][A
+Batch:  56%|████████████████████▏               | 14/25 [00:12<00:09,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (15/25) | Loss: 0.634
+Epoch:  33%|██████████▋                     | 2/6 [4:16:03<9:40:18, 8704.60s/it]
+Batch:  56%|████████████████████▏               | 14/25 [00:13<00:09,  1.13it/s][A
+Batch:  60%|█████████████████████▌              | 15/25 [00:13<00:08,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (16/25) | Loss: 0.219
+Epoch:  33%|██████████▋                     | 2/6 [4:16:04<9:40:18, 8704.60s/it]
+Batch:  60%|█████████████████████▌              | 15/25 [00:14<00:08,  1.13it/s][A
+Batch:  64%|███████████████████████             | 16/25 [00:14<00:07,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (17/25) | Loss: 0.282
+Epoch:  33%|██████████▋                     | 2/6 [4:16:05<9:40:18, 8704.60s/it]
+Batch:  64%|███████████████████████             | 16/25 [00:15<00:07,  1.13it/s][A
+Batch:  68%|████████████████████████▍           | 17/25 [00:15<00:07,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (18/25) | Loss: 0.425
+Epoch:  33%|██████████▋                     | 2/6 [4:16:06<9:40:18, 8704.60s/it]
+Batch:  68%|████████████████████████▍           | 17/25 [00:15<00:07,  1.13it/s][A
+Batch:  72%|█████████████████████████▉          | 18/25 [00:15<00:06,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (19/25) | Loss: 0.452
+Epoch:  33%|██████████▋                     | 2/6 [4:16:06<9:40:18, 8704.60s/it]
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.13it/s][A
+Batch:  76%|███████████████████████████▎        | 19/25 [00:16<00:05,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (20/25) | Loss: 0.298
+Epoch:  33%|██████████▋                     | 2/6 [4:16:07<9:40:18, 8704.60s/it]
+Batch:  76%|███████████████████████████▎        | 19/25 [00:17<00:05,  1.13it/s][A
+Batch:  80%|████████████████████████████▊       | 20/25 [00:17<00:04,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (21/25) | Loss: 0.120
+Epoch:  33%|██████████▋                     | 2/6 [4:16:08<9:40:18, 8704.60s/it]
+Batch:  80%|████████████████████████████▊       | 20/25 [00:18<00:04,  1.13it/s][A
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:18<00:03,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (22/25) | Loss: 0.558
+Epoch:  33%|██████████▋                     | 2/6 [4:16:09<9:40:18, 8704.60s/it]
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:19<00:03,  1.13it/s][A
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:19<00:02,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (23/25) | Loss: 0.415
+Epoch:  33%|██████████▋                     | 2/6 [4:16:10<9:40:18, 8704.60s/it]
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:20<00:02,  1.13it/s][A
+Batch:  92%|█████████████████████████████████   | 23/25 [00:20<00:01,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (24/25) | Loss: 0.834
+Epoch:  33%|██████████▋                     | 2/6 [4:16:11<9:40:18, 8704.60s/it]
+Batch:  92%|█████████████████████████████████   | 23/25 [00:21<00:01,  1.13it/s][A
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:21<00:00,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 3 | Batch: (25/25) | Loss: 0.453
+Epoch:  33%|██████████▋                     | 2/6 [4:16:12<9:40:18, 8704.60s/it]
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:22<00:00,  1.13it/s][A
+Batch: 100%|████████████████████████████████████| 25/25 [00:22<00:00,  1.13it/s][A
+                                                                                [A                                                                                Epoch Loss: 0.51
+Epoch:  33%|██████████▋                     | 2/6 [4:16:12<9:40:18, 8704.60s/it]                                                                                Test done! | It took 7.3s | Test Loss: 0.44
+Epoch:  33%|██████████▋                     | 2/6 [4:16:19<9:40:18, 8704.60s/it]                                                                                Saved sampled images at f/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45/epoch-3.png)
+Epoch:  33%|██████████▋                     | 2/6 [4:16:19<9:40:18, 8704.60s/it]^[[A^[[A^[[A^[[A^[[A^[[B^[[B^[[B^[[A^[[A^[[BEpoch:  50%|████████████████                | 3/6 [5:41:24<6:21:40, 7633.61s/it]
+Batch:   0%|                                             | 0/25 [00:00<?, ?it/s][A
+Batch:   4%|█▍                                   | 1/25 [00:00<00:21,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (2/25) | Loss: 0.291
+Epoch:  50%|████████████████                | 3/6 [5:41:26<6:21:40, 7633.61s/it]
+Batch:   4%|█▍                                   | 1/25 [00:01<00:21,  1.13it/s][A
+Batch:   8%|██▉                                  | 2/25 [00:01<00:20,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (3/25) | Loss: 0.175
+Epoch:  50%|████████████████                | 3/6 [5:41:27<6:21:40, 7633.61s/it]
+Batch:   8%|██▉                                  | 2/25 [00:02<00:20,  1.12it/s][A
+Batch:  12%|████▍                                | 3/25 [00:02<00:19,  1.13it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (4/25) | Loss: 0.940
+Epoch:  50%|████████████████                | 3/6 [5:41:28<6:21:40, 7633.61s/it]
+Batch:  12%|████▍                                | 3/25 [00:03<00:19,  1.13it/s][A
+Batch:  16%|█████▉                               | 4/25 [00:03<00:18,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (5/25) | Loss: 0.277
+Epoch:  50%|████████████████                | 3/6 [5:41:29<6:21:40, 7633.61s/it]
+Batch:  16%|█████▉                               | 4/25 [00:04<00:18,  1.12it/s][A
+Batch:  20%|███████▍                             | 5/25 [00:04<00:17,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (6/25) | Loss: 1.005
+Epoch:  50%|████████████████                | 3/6 [5:41:30<6:21:40, 7633.61s/it]
+Batch:  20%|███████▍                             | 5/25 [00:05<00:17,  1.12it/s][A
+Batch:  24%|████████▉                            | 6/25 [00:05<00:16,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (7/25) | Loss: 0.421
+Epoch:  50%|████████████████                | 3/6 [5:41:30<6:21:40, 7633.61s/it]
+Batch:  24%|████████▉                            | 6/25 [00:06<00:16,  1.12it/s][A
+Batch:  28%|██████████▎                          | 7/25 [00:06<00:16,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (8/25) | Loss: 0.341
+Epoch:  50%|████████████████                | 3/6 [5:41:31<6:21:40, 7633.61s/it]
+Batch:  28%|██████████▎                          | 7/25 [00:07<00:16,  1.12it/s][A
+Batch:  32%|███████████▊                         | 8/25 [00:07<00:15,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (9/25) | Loss: 0.330
+Epoch:  50%|████████████████                | 3/6 [5:41:32<6:21:40, 7633.61s/it]
+Batch:  32%|███████████▊                         | 8/25 [00:08<00:15,  1.12it/s][A
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (10/25) | Loss: 0.520
+Epoch:  50%|████████████████                | 3/6 [5:41:33<6:21:40, 7633.61s/it]
+Batch:  36%|█████████████▎                       | 9/25 [00:08<00:14,  1.12it/s][A
+Batch:  40%|██████████████▍                     | 10/25 [00:08<00:13,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (11/25) | Loss: 0.306
+Epoch:  50%|████████████████                | 3/6 [5:41:34<6:21:40, 7633.61s/it]
+Batch:  40%|██████████████▍                     | 10/25 [00:09<00:13,  1.12it/s][A
+Batch:  44%|███████████████▊                    | 11/25 [00:09<00:12,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (12/25) | Loss: 0.559
+Epoch:  50%|████████████████                | 3/6 [5:41:35<6:21:40, 7633.61s/it]
+Batch:  44%|███████████████▊                    | 11/25 [00:10<00:12,  1.12it/s][A
+Batch:  48%|█████████████████▎                  | 12/25 [00:10<00:11,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (13/25) | Loss: 0.394
+Epoch:  50%|████████████████                | 3/6 [5:41:36<6:21:40, 7633.61s/it]
+Batch:  48%|█████████████████▎                  | 12/25 [00:11<00:11,  1.12it/s][A
+Batch:  52%|██████████████████▋                 | 13/25 [00:11<00:10,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (14/25) | Loss: 0.553
+Epoch:  50%|████████████████                | 3/6 [5:41:37<6:21:40, 7633.61s/it]
+Batch:  52%|██████████████████▋                 | 13/25 [00:12<00:10,  1.12it/s][A
+Batch:  56%|████████████████████▏               | 14/25 [00:12<00:09,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (15/25) | Loss: 0.709
+Epoch:  50%|████████████████                | 3/6 [5:41:38<6:21:40, 7633.61s/it]
+Batch:  56%|████████████████████▏               | 14/25 [00:13<00:09,  1.12it/s][A
+Batch:  60%|█████████████████████▌              | 15/25 [00:13<00:08,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (16/25) | Loss: 0.611
+Epoch:  50%|████████████████                | 3/6 [5:41:38<6:21:40, 7633.61s/it]
+Batch:  60%|█████████████████████▌              | 15/25 [00:14<00:08,  1.12it/s][A
+Batch:  64%|███████████████████████             | 16/25 [00:14<00:08,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (17/25) | Loss: 0.414
+Epoch:  50%|████████████████                | 3/6 [5:41:39<6:21:40, 7633.61s/it]
+Batch:  64%|███████████████████████             | 16/25 [00:15<00:08,  1.12it/s][A
+Batch:  68%|████████████████████████▍           | 17/25 [00:15<00:07,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (18/25) | Loss: 0.614
+Epoch:  50%|████████████████                | 3/6 [5:41:40<6:21:40, 7633.61s/it]
+Batch:  68%|████████████████████████▍           | 17/25 [00:16<00:07,  1.12it/s][A
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (19/25) | Loss: 0.380
+Epoch:  50%|████████████████                | 3/6 [5:41:41<6:21:40, 7633.61s/it]
+Batch:  72%|█████████████████████████▉          | 18/25 [00:16<00:06,  1.12it/s][A
+Batch:  76%|███████████████████████████▎        | 19/25 [00:16<00:05,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (20/25) | Loss: 0.601
+Epoch:  50%|████████████████                | 3/6 [5:41:42<6:21:40, 7633.61s/it]
+Batch:  76%|███████████████████████████▎        | 19/25 [00:17<00:05,  1.12it/s][A
+Batch:  80%|████████████████████████████▊       | 20/25 [00:17<00:04,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (21/25) | Loss: 0.383
+Epoch:  50%|████████████████                | 3/6 [5:41:43<6:21:40, 7633.61s/it]
+Batch:  80%|████████████████████████████▊       | 20/25 [00:18<00:04,  1.12it/s][A
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:18<00:03,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (22/25) | Loss: 0.376
+Epoch:  50%|████████████████                | 3/6 [5:41:44<6:21:40, 7633.61s/it]
+Batch:  84%|██████████████████████████████▏     | 21/25 [00:19<00:03,  1.12it/s][A
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:19<00:02,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (23/25) | Loss: 0.447
+Epoch:  50%|████████████████                | 3/6 [5:41:45<6:21:40, 7633.61s/it]
+Batch:  88%|███████████████████████████████▋    | 22/25 [00:20<00:02,  1.12it/s][A
+Batch:  92%|█████████████████████████████████   | 23/25 [00:20<00:01,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (24/25) | Loss: 0.389
+Epoch:  50%|████████████████                | 3/6 [5:41:46<6:21:40, 7633.61s/it]
+Batch:  92%|█████████████████████████████████   | 23/25 [00:21<00:01,  1.12it/s][A
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:21<00:00,  1.12it/s][A                                                                                
+                                                                                [AEpoch: 4 | Batch: (25/25) | Loss: 0.749
+Epoch:  50%|████████████████                | 3/6 [5:41:46<6:21:40, 7633.61s/it]
+Batch:  96%|██████████████████████████████████▌ | 24/25 [00:22<00:00,  1.12it/s][A
+Batch: 100%|████████████████████████████████████| 25/25 [00:22<00:00,  1.12it/s][A
+                                                                                [A                                                                                Epoch Loss: 0.50
+Epoch:  50%|████████████████                | 3/6 [5:41:46<6:21:40, 7633.61s/it]                                                                                Test done! | It took 7.4s | Test Loss: 0.44
+Epoch:  50%|████████████████                | 3/6 [5:41:54<6:21:40, 7633.61s/it]                                                                                Saved sampled images at f/home/ubuntu/project/CS282_proj/PixelCNN/results/2019-05-04_22-11-45/epoch-4.png)
+Epoch:  50%|████████████████                | 3/6 [5:41:54<6:21:40, 7633.61s/it]

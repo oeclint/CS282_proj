@@ -74,6 +74,7 @@ class Solver(object):
             #if epoch_i==3 or epoch_i==6:
             self.sample(epoch_i)
 
+    @torch.no_grad()
     def test(self, epoch_i):
         """Compute error on test set"""
 
@@ -86,7 +87,7 @@ class Solver(object):
         for image, label in self.test_loader:
 
             # [batch_size, channel, height, width]
-            image = Variable(image.cuda(async=True), volatile=True)
+            image = Variable(image.cuda(async=True))
 
             # [batch_size, channel, height, width, 256]
             logit = self.net(image).contiguous()
@@ -108,6 +109,7 @@ class Solver(object):
         log_string += f'Test Loss: {np.mean(test_errors):.2f}'
         tqdm.write(log_string)
 
+    @torch.no_grad()
     def sample(self, epoch_i):
         """Sampling Images"""
 
@@ -121,7 +123,7 @@ class Solver(object):
             for j in range(48):
 
                 # [batch_size, channel, height, width, 256]
-                out = self.net(Variable(sample, volatile=True))
+                out = self.net(Variable(sample))
 
                 # out[:, :, i, j]
                 # => [batch_size, channel, 256]
