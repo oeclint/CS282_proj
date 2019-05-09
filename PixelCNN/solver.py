@@ -29,7 +29,7 @@ class Solver(object):
 
     def train(self):
 
-        for epoch_i in trange(6, desc='Epoch', ncols=80):
+        for epoch_i in trange(self.config.n_epochs, desc='Epoch', ncols=80):
             epoch_i += 1
 
             # For debugging
