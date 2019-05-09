@@ -230,11 +230,11 @@ if __name__ == '__main__':
     trains, tests = train_test_split(glob.glob(p+'*.png'), test_size = 20)
     for train in trains:
         fname = train.split(os.sep)[-1]
-        #os.rename(train, os.path.join(trainp, fname))
+        os.rename(train, os.path.join(trainp, fname))
 
     for test in tests:
         fname = test.split(os.sep)[-1]
-        #os.rename(test, os.path.join(testp, fname))
+        os.rename(test, os.path.join(testp, fname))
 
 
 
