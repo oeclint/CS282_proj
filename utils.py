@@ -34,7 +34,7 @@ def save_piano_rolls(file_path):
     mf = MidiFile.from_mid(f)
     mf.save_piano_rolls()
 
-def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
+def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1, octave4 = False):
 
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
@@ -54,13 +54,18 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1):
             #channel_arr = np.zeros((num_channels, r, size_per_channel))
             channel_arr = []
             for cx, j in enumerate(range(i, i + size, size_per_channel)):
-                octshft = OctaveShifter(arr[:,j : j + size_per_channel])
-                #channel_arr[cx] = octshft.shift()
-                shifted = octshft.shift_to_4_octaves()
-                channel_arr.append(sparse.csr_matrix(shifted))
-                if np.any(shifted):
-                    min_top = min(min_top,octshft.top)
-                    max_bot = max(max_bot,octshft.bot)
+                if octave4:
+                    octshft = OctaveShifter(arr[:,j : j + size_per_channel])
+                    #channel_arr[cx] = octshft.shift()
+                    shifted = octshft.shift_to_4_octaves()
+                    channel_arr.append(sparse.csr_matrix(shifted))
+                    if np.any(shifted):
+                        min_top = min(min_top,octshft.top)
+                        max_bot = max(max_bot,octshft.bot)
+                else:
+                    channel_arr.append(sparse.csr_matrix(
+                        arr[:,j : j + size_per_channel]))
+                    
             data_arr.append(channel_arr)
 
     return data_arr, min_top, max_bot
