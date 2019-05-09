@@ -39,8 +39,12 @@ def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1, octav
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
 
-    min_top = 127
-    max_bot = 0
+    if octave4:
+        min_top = 127
+        max_bot = 0
+    else:
+        min_top = 0
+        max_bot = 127
 
     data_arr = deque()
 
@@ -108,7 +112,7 @@ class DataGen(object):
 
     def gen_batch(self):
         indx = np.random.randint(0, high = len(self._data), size = self.batch_size)
-        data = [self._data[i] for i in indx]
+        data = [np.stack([d.toarray() for d in self._data[i]]) for i in indx]
         return np.stack(data)
 
 class OctaveShifter(object):
@@ -208,9 +212,29 @@ class OctaveShifter(object):
         return self.arr
 
 if __name__ == '__main__':
-    data = DataGen('data/*/*.npz', 68, 3)
-    data.clip()
-    data.write('imgs/d')
+    import os
+    from sklearn.model_selection import train_test_split
+    data = DataGen('data/adam/*.npz', 68, 3)
+#    data.clip()
+    root = 'PixelCNN/datasets/pianorolls'
+    files = glob.glob(os.path.join(root,'**','*.png'), recursive = True)
+    for f in files:
+        os.remove(f)
+    p = os.path.join(root,'d')
+    trainp = os.path.join(root, 'train', 'data')
+    testp = os.path.join(root, 'test', 'data')
+    data.write(p)
     print('top:', data.top, 'bot:', data.bot)
     print("loaded {0} datasets".format(len(data)))
     print(data.gen_batch().shape)
+    trains, tests = train_test_split(glob.glob(p+'*.png'), test_size = 20)
+    for train in trains:
+        fname = train.split(os.sep)[-1]
+        #os.rename(train, os.path.join(trainp, fname))
+
+    for test in tests:
+        fname = test.split(os.sep)[-1]
+        #os.rename(test, os.path.join(testp, fname))
+
+
+
