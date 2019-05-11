@@ -4,3 +4,4 @@ __pycache__/
 *.png
 results/
 *.DS_Store
+*.pt
