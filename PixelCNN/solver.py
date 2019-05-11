@@ -34,8 +34,8 @@ class Solver(object):
 
             # For debugging
             # In case there is a memory error
-            if epoch_i == 1:
-                self.sample_row(epoch_i)
+#            if epoch_i == 1:
+#                self.sample_row(epoch_i)
 
             self.net.train()
             self.batch_loss_history = []
@@ -164,7 +164,7 @@ class Solver(object):
             # Sample single pixel (each channel independently)
             for k in range(3):
                 #[batch_size, 48, 256]
-                channel_probs = probs[:, k]
+                channel_probs = probs[:, k].contiguous()
                 # 0 ~ 255 => 0 ~ 1
                 pixel = torch.multinomial(channel_probs.view(-1, 256), 1).float() / 255.
                 #[batch_size, 48]
