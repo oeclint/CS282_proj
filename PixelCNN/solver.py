@@ -142,3 +142,36 @@ class Solver(object):
         #ipdb.set_trace()
 
         save_image(sample, image_path)
+
+    @torch.no_grad()
+    def sample_row(self, epoch_i):
+        """Sampling Images"""
+
+        image_path = str(self.config.ckpt_dir.joinpath(f'epoch-{epoch_i}.png'))
+        tqdm.write(f'Saved sampled images at f{image_path})')
+        self.net.eval()
+
+        sample = torch.zeros(self.config.batch_size, 3, 384, 48).cuda()
+
+        for i in trange(384, desc='Sample', ncols=80):
+
+            # [batch_size, channel, height, width, 256]
+            out = self.net(Variable(sample))
+
+            # out[:, :, i, j]
+            # => [batch_size, channel, 48, 256]
+            probs = F.softmax(out[:, :, i, :], dim=3).data
+
+            # Sample single pixel (each channel independently)
+            for k in range(3):
+                #[batch_size, 48, 256]
+                channel_probs = probs[:, k]
+                # 0 ~ 255 => 0 ~ 1
+                pixel = torch.multinomial(channel_probs.view(-1, 256), 1).float() / 255.
+                #[batch_size, 48]
+                sample[:, k, i, :] = pixel.squeeze().view(-1, 48)
+
+        #import ipdb
+        #ipdb.set_trace()
+
+        save_image(sample, image_path)
