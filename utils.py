@@ -34,7 +34,7 @@ def save_piano_rolls(file_path):
     mf = MidiFile.from_mid(f)
     mf.save_piano_rolls()
 
-def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1, octave4 = False):
+def get_piano_rolls(file_path, size_per_channel = 128*3, num_channels = 1, octave4 = True):
 
     f = glob.glob(file_path)
     mf = MidiFile.from_npz(f)
@@ -214,8 +214,8 @@ class OctaveShifter(object):
 if __name__ == '__main__':
     import os
     from sklearn.model_selection import train_test_split
-    data = DataGen('data/adam/*.npz', 68, 3)
-#    data.clip()
+    data = DataGen('data/*/*.npz', 68, 3)
+    data.clip()
     root = 'PixelCNN/datasets/pianorolls'
     files = glob.glob(os.path.join(root,'**','*.png'), recursive = True)
     for f in files:
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     print('top:', data.top, 'bot:', data.bot)
     print("loaded {0} datasets".format(len(data)))
     print(data.gen_batch().shape)
-    trains, tests = train_test_split(glob.glob(p+'*.png'), test_size = 20)
+    trains, tests = train_test_split(glob.glob(p+'*.png'), test_size = 0.20)
     for train in trains:
         fname = train.split(os.sep)[-1]
         os.rename(train, os.path.join(trainp, fname))

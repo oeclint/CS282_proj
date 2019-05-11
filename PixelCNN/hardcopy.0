@@ -1,0 +1,42 @@
+ubuntu@ip-172-31-56-161:~/project/CS282_proj/PixelCNN$ source activate pytorch_p36
+(pytorch_p36) ubuntu@ip-172-31-56-161:~/project/CS282_proj/PixelCNN$ ls
+configs.py  data_loader.py  datasets  __init__.py  layers.py  models.py  __pycache__  results  solver.py  train.py
+(pytorch_p36) ubuntu@ip-172-31-56-161:~/project/CS282_proj/PixelCNN$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
