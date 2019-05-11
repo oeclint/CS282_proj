@@ -48,6 +48,8 @@ class MidiFile(object):
                 tot_len += midi_data.get_end_time()
                 files.append(fname)
                 arr = midi_data.get_piano_roll()
+                # normalize velocities
+                arr = (255/np.max(arr)) * arr
                 # store as sparse matrix to save space
                 arrays.append(sparse.csr_matrix(arr))
 

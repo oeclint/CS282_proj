@@ -35,8 +35,7 @@ class Solver(object):
             # For debugging
             # In case there is a memory error
             if epoch_i == 1:
-                torch.save(self.net.state_dict(), 'net.pt')
-                self.sample(epoch_i)
+                self.sample_row(epoch_i)
 
             self.net.train()
             self.batch_loss_history = []
@@ -75,7 +74,7 @@ class Solver(object):
 
             if epoch_i % self.config.save_interval == 0:
                 torch.save(self.net.state_dict(), 'net.pt')
-                self.sample(epoch_i)
+                self.sample_row(epoch_i)
 
     @torch.no_grad()
     def test(self, epoch_i):

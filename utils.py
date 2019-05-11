@@ -212,6 +212,7 @@ class OctaveShifter(object):
         return self.arr
 
 if __name__ == '__main__':
+#    save_piano_rolls('data/*/*.mid')    
     import os
     from sklearn.model_selection import train_test_split
     data = DataGen('data/*/*.npz', 68, 3)
