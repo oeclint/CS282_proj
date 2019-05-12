@@ -16,5 +16,11 @@ pip install pretty-midi
 Run the following command to run the PixelCNN model
 
 ```bash
-python train.py -dataset pianorolls --batch_size 32 --save_interval 1 --log_interval 1
+python train.py -dataset pianorolls --batch_size 6 --save_interval 1 --log_interval 1 --optimizer Adam
+```
+
+## Converting back to MIDI
+
+```bash
+python tomidi.py epoch-17.png
 ```
