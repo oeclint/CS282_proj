@@ -121,7 +121,7 @@ class Solver(object):
 
         sample = torch.zeros(self.config.batch_size, 3, 384, 48).cuda()
 
-        for i in range(384):
+        for i in trange(384, desc='Sample', ncols=80):
             for j in range(48):
 
                 # [batch_size, channel, height, width, 256]
